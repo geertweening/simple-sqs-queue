@@ -1,0 +1,19 @@
+{
+  "name": "simple-sqs-queue",
+  "version": "0.0.1",
+  "description": "lightweight API wrapper around sqs",
+  "main": "queue.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": {
+    "name": "Geert Weening",
+    "email": "geertweening@gmail.com"
+  },
+  "dependencies": {
+    "aws-sdk": "~2.0.0-rc.14",
+    "lru-cache": "~2.5.0",
+    "nconf": "~0.6.9"
+  }
+}
