@@ -1,14 +1,15 @@
 var Queue = require('./queue');
 
-var queue1 = new Queue(URL_QUEUE_SEND,     URL_QUEUE_RECEIVE);
-var queue2 = new Queue(URL_QUEUE_RECEIVE,  URL_QUEUE_SEND);
+
+var queue1 = new Queue( {sendQueueUrl: URL_QUEUE_SEND,      receiveQueueUrl: URL_QUEUE_RECEIVE, awsRegion: AWS_REGION });
+var queue2 = new Queue( {sendQueueUrl: URL_QUEUE_RECEIVE,   receiveQueueUrl: URL_QUEUE_SEND   , awsRegion: AWS_REGION });
 
 var run = function() {
 
   console.log("\nrun\n");
 
   queue1.put(JSON.stringify({name: 'henk', id: 1234}), function(err, result) {
-    console.log("queue1 put", result);
+    console.log("queue1 put", result, err);
   });
 
   queue2.get(function(err, result) {

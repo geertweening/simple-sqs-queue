@@ -2,21 +2,22 @@ var AWS   = require('aws-sdk');
 var LRU   = require('lru-cache');
 var nconf = require('nconf');
 
-var Queue = function(sendQueueUrl, receiveQueueUrl) {
+
+var Queue = function(options) {
 
   nconf
     .env()
-    .file({ file: process.env.QUEUE_CONFIG || './config.json' });
+    .file({ file: options.configPath || process.env.QUEUE_CONFIG || './config.json' });
 
   // passed in parameters override nconf variables
-  this.sendQueueUrl     = sendQueueUrl    || nconf.get('URL_QUEUE_SEND');
-  this.receiveQueueUrl  = receiveQueueUrl || nconf.get('URL_QUEUE_RECEIVE');
+  this.sendQueueUrl     = options.sendQueueUrl    || nconf.get('URL_QUEUE_SEND');
+  this.receiveQueueUrl  = options.receiveQueueUrl || nconf.get('URL_QUEUE_RECEIVE');
 
   // config AWS
   AWS.config.update({
-    accessKeyId:      nconf.get('AWS_ACCESS_KEY_ID'),
-    secretAccessKey:  nconf.get('AWS_SECRET_ACCESS_KEY'),
-    region:           nconf.get('AWS_REGION')
+    accessKeyId:      options.awsKeyId    || nconf.get('AWS_ACCESS_KEY_ID'),
+    secretAccessKey:  options.awsSecret   || nconf.get('AWS_SECRET_ACCESS_KEY'),
+    region:           options.awsRegion   || nconf.get('AWS_REGION')
   });
 
   // create sqs instance which will use configuration above
@@ -32,6 +33,10 @@ var Queue = function(sendQueueUrl, receiveQueueUrl) {
 
 };
 
+
+//
+// store a message on the sendQueue
+//
 Queue.prototype.put = function(message, callback) {
 
   var _this = this;
@@ -53,6 +58,9 @@ Queue.prototype.put = function(message, callback) {
 };
 
 
+//
+// read available messages from the receiveQueue
+//
 Queue.prototype.get = function(callback) {
 
   var _this = this;
@@ -93,6 +101,10 @@ Queue.prototype.get = function(callback) {
 };
 
 
+//
+// remove a message from the receiveQueue
+// will also put this message in the cache so we know we received and processed it
+//
 Queue.prototype.remove = function(message, callback) {
    var _this = this;
 
