@@ -10,6 +10,10 @@
     "name": "Geert Weening",
     "email": "geertweening@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/geertweening/simple-sqs-queue.git"
+  },
   "dependencies": {
     "aws-sdk": "~2.0.0-rc.14",
     "lru-cache": "~2.5.0",
