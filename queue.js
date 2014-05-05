@@ -10,14 +10,14 @@ var Queue = function(options) {
     .file({ file: options.configPath || process.env.QUEUE_CONFIG || './config.json' });
 
   // passed in parameters override nconf variables
-  this.sendQueueUrl     = options.sendQueueUrl    || nconf.get('URL_QUEUE_SEND');
-  this.receiveQueueUrl  = options.receiveQueueUrl || nconf.get('URL_QUEUE_RECEIVE');
+  this.sendQueueUrl     = options.urlQueueSend    || nconf.get('URL_QUEUE_SEND');
+  this.receiveQueueUrl  = options.urlQueueReceive || nconf.get('URL_QUEUE_RECEIVE');
 
   // config AWS
   AWS.config.update({
-    accessKeyId:      options.awsKeyId    || nconf.get('AWS_ACCESS_KEY_ID'),
-    secretAccessKey:  options.awsSecret   || nconf.get('AWS_SECRET_ACCESS_KEY'),
-    region:           options.awsRegion   || nconf.get('AWS_REGION')
+    accessKeyId:      options.awsAccessKeyId      || nconf.get('AWS_ACCESS_KEY_ID'),
+    secretAccessKey:  options.awsSecretAccessKey  || nconf.get('AWS_SECRET_ACCESS_KEY'),
+    region:           options.awsRegion           || nconf.get('AWS_REGION')
   });
 
   // create sqs instance which will use configuration above
@@ -28,7 +28,7 @@ var Queue = function(options) {
     max: 1000,
     length: function (n) { return 1 },
     dispose: function (key, n) { console.log(key) },
-    maxAge: 1000 * 60 * 60 * 24 // 1 day, just like the queue retention policy
+    maxAge: 1000 * 60 * 60 * 24 // 1 day
   });
 
 };

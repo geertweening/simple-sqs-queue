@@ -30,8 +30,8 @@ var bobQueue;
 
 // set up send and receive queue
 before(function () {
-  aliceQueue = new Queue( {sendQueueUrl: URL_QUEUE_SEND, receiveQueueUrl: URL_QUEUE_RECEIVE, awsRegion: AWS_REGION });
-  bobQueue = new Queue( {sendQueueUrl: URL_QUEUE_RECEIVE, receiveQueueUrl: URL_QUEUE_SEND, awsRegion: AWS_REGION });
+  aliceQueue = new Queue( {urlQueueSend: URL_QUEUE_SEND, urlQueueReceive: URL_QUEUE_RECEIVE, awsRegion: AWS_REGION });
+  bobQueue = new Queue( {urlQueueSend: URL_QUEUE_RECEIVE, urlQueueReceive: URL_QUEUE_SEND, awsRegion: AWS_REGION });
 });
 
 
