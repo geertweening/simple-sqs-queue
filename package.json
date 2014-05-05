@@ -4,8 +4,7 @@
   "description": "lightweight API wrapper around sqs",
   "main": "queue.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "mocha test.js"
   },
   "author": {
     "name": "Geert Weening",
