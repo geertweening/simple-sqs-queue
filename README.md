@@ -30,7 +30,7 @@ e.g. `export AWS_SECRET_ACCESS_KEY=123467890abcdefgh`
 
 ###config.json
 
-Create a config.json. By default `./config.json` is used, but you can override the path by setting the `QUEUE_CONFIG` env variable.
+Create a config.json. By default `./simple-sqs-queue-config.json` is used, but you can override the path by setting the `QUEUE_CONFIG` env variable.
 
 The config.json can also be passed in on instantiation in the options parameter. More on the options parameter below
 
