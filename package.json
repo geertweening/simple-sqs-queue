@@ -1,6 +1,6 @@
 {
   "name": "simple-sqs-queue",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "lightweight API wrapper around sqs",
   "main": "queue.js",
   "scripts": {
