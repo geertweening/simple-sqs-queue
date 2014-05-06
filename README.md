@@ -14,14 +14,14 @@
 
 ##Configuring
 
-You have multiple options to configure a Queue. This library uses nconf to allow transparent use of environt variables and a config file. The following variables are used:
+You have multiple options to configure a Queue. This library uses nconf to allow transparent use of environment variables and a config file. The following variables are used:
 
-`URL_QUEUE_SEND`
-`URL_QUEUE_RECEIVE`
+- `URL_QUEUE_SEND`
+- `URL_QUEUE_RECEIVE`
 
-`AWS_ACCESS_KEY_ID`
-`AWS_SECRET_ACCESS_KEY`
-`AWS_REGION`
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_REGION`
 
 ###Environment variables
 
@@ -31,6 +31,15 @@ e.g. `export AWS_SECRET_ACCESS_KEY=123467890abcdefgh`
 ###config.json
 
 Create a config.json. By default `./config.json` is used, but you can override the path by setting the `QUEUE_CONFIG` env variable.
+
+The config.json can also be passed in on instantiation in the options parameter. More on the options parameter below
+
+```
+var Queue     = require('simple-sqs-queue');
+var bobQueue  = new Queue({
+  configPath: './path/to/config.json'
+});
+```
 
 ###options parameter
 When creating a Queue, you can pass in an options parameter which will override environment variables and config file settings. The options keys have the same names as their config variables, but they are camelCased.
