@@ -7,7 +7,7 @@ var Queue = function(options) {
 
   nconf
     .env()
-    .file({ file: options.configPath || process.env.QUEUE_CONFIG || './config.json' });
+    .file('simple-sqs-queue', { file: options.configPath || process.env.QUEUE_CONFIG || './config.json' });
 
   // passed in parameters override nconf variables
   this.sendQueueUrl     = options.urlQueueSend    || nconf.get('URL_QUEUE_SEND');
