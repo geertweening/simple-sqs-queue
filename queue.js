@@ -26,8 +26,8 @@ var Queue = function(options) {
   // set up LRU cache, for messageId's that we've processed
   this.cache = LRU({
     max: 1000,
-    length: function (n) { return 1 },
-    dispose: function (key, n) { console.log(key) },
+    length: function (n) { return 1; },
+    dispose: function (key, n) { console.log(key); },
     maxAge: 1000 * 60 * 60 * 24 // 1 day
   });
 
