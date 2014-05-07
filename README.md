@@ -2,7 +2,7 @@
 
 [![NPM](https://nodei.co/npm/simple-sqs-queue.png)](https://www.npmjs.org/package/simple-sqs-queue)
 
-`simple-sqs-queue` is a lightweight wrapper around Amazon's SQS functionality. This library adds a simple interface to interact with SQS's queues. Simple put and get requests with options to configure the SQS behavior.
+`simple-sqs-queue` is a lightweight wrapper around Amazon's SQS functionality. This library provides a simple interface to interact with SQS's. A basic put, get and remove API with options to configure the SQS behavior.
 
 ##Getting `simple-sqs-queue`
 
@@ -22,6 +22,8 @@ You have multiple options to configure a Queue. This library uses nconf to allow
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
 - `AWS_REGION`
+
+- `QUEUE_CONFIG`
 
 ###Environment variables
 
