@@ -1,7 +1,7 @@
 {
   "name": "simple-sqs-queue",
-  "version": "0.0.4",
-  "description": "lightweight API wrapper around sqs",
+  "version": "0.0.5",
+  "description": "Lightweight API wrapper around Amazon's (AWS) SQS",
   "main": "queue.js",
   "scripts": {
     "test": "mocha test.js"
